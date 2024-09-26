@@ -653,3 +653,6 @@ if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
 		return __( ', ', 'twentytwentyone' );
 	}
 endif;
+
+require_once get_template_directory() . '/inc/service-functions.php';
+require_once get_template_directory() . '/inc/login-functions.php';

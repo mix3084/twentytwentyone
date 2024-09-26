@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
 /*
-Theme Name: Twenty Twenty-One
-Theme URI: https://wordpress.org/themes/twentytwentyone/
+Theme Name: GGG
 Author: the WordPress team
 Author URI: https://wordpress.org/
 Description: Twenty Twenty-One is a blank canvas for your ideas and it makes the block editor your best brush. With new block patterns, which allow you to create a beautiful layout in a matter of seconds, this theme’s soft colors and eye-catching — yet timeless — design will let your work shine. Take it for a spin! See how Twenty Twenty-One elevates your portfolio, business website, or personal blog.
@@ -5917,4 +5916,85 @@ footer {
 
 .is-IE .post-thumbnail .wp-post-image {
 	min-width: auto;
+}
+
+.star-emoji {
+	font-size: 30px; /* Размер эмодзи */
+	color: #9e8600; /* Цвет звезд */
+	display: inline-block;
+	position: relative;
+}
+
+.half-star::before {
+	content: '★'; /* Полная звезда */
+	position: absolute;
+	left: 0;
+	width: 50%; /* Отображаем половину звезды */
+	overflow: hidden;
+	color: #9e8600; /* Цвет первой половины звезды */
+}
+/* Общий стиль для хлебных крошек */
+.breadcrumbs {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumbs-item {
+    display: inline;
+}
+
+.breadcrumbs-item a {
+    color: #0073aa; /* Цвет ссылок */
+    text-decoration: none;
+    padding: 5px;
+    transition: color 0.2s ease;
+}
+
+.breadcrumbs-item a:hover {
+    color: #005177; /* Цвет ссылок при наведении */
+}
+
+.breadcrumbs-separator {
+    display: inline;
+    margin: 0 5px;
+    color: #777; /* Цвет разделителя */
+}
+
+/* Мобильная версия хлебных крошек */
+@media (max-width: 768px) {
+    .breadcrumbs {
+        font-size: 12px;
+        margin: 10px 0;
+    }
+
+    .breadcrumbs-item a {
+        padding: 3px;
+    }
+
+    .breadcrumbs-separator {
+        margin: 0 3px;
+    }
+}
+
+/* Добавляем жирное выделение для последнего элемента хлебных крошек (текущей страницы) */
+.breadcrumbs-item:last-child {
+    font-weight: bold;
+    color: #333; /* Цвет текущего элемента */
+}
+
+.breadcrumbs-item:last-child a {
+    pointer-events: none; /* Отключаем ссылку на последнем элементе */
+    color: inherit;
+}
+
+.breadcrumbs-item:last-child::after {
+    content: none;
 }

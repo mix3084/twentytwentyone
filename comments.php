@@ -28,7 +28,44 @@ $twenty_twenty_one_comment_count = get_comments_number();
 
 	<?php
 	if ( have_comments() ) :
+		// Получаем средние оценки из полей ACF для текущего поста (сервиса)
+		$average_usability 			= get_field( 'average_usability' );
+		$average_functionality 		= get_field( 'average_functionality' );
+		$average_customizability	= get_field( 'average_customizability' );
+		$average_overall 			= get_field( 'average_overall' );
 		?>
+
+		<?php 
+		if ( 
+			$average_usability > 0 || 
+			$average_functionality > 0 || 
+			$average_customizability > 0 ||
+			$average_overall > 0 
+		) : 
+		?>
+			<div class="average-ratings">
+				<h3><?php _e( 'Average Ratings:', 'twentytwentyone' ); ?></h3>
+				<ul>
+					<li>
+						<strong><?php _e( 'Overall Rating:', 'twentytwentyone' ); ?></strong> 
+						<?php echo get_star_rating_html( $average_overall ); ?>
+					</li>
+					<li>
+						<strong><?php _e( 'Usability:', 'twentytwentyone' ); ?></strong> 
+						<?php echo get_star_rating_html( $average_usability ); ?>
+					</li>
+					<li>
+						<strong><?php _e( 'Functionality:', 'twentytwentyone' ); ?></strong> 
+						<?php echo get_star_rating_html( $average_functionality ); ?>
+					</li>
+					<li>
+						<strong><?php _e( 'Customizability:', 'twentytwentyone' ); ?></strong> 
+						<?php echo get_star_rating_html( $average_customizability ); ?>
+					</li>
+				</ul>
+			</div>
+		<?php endif; ?>
+
 		<h2 class="comments-title">
 			<?php if ( '1' === $twenty_twenty_one_comment_count ) : ?>
 				<?php esc_html_e( '1 comment', 'twentytwentyone' ); ?>
@@ -50,6 +87,7 @@ $twenty_twenty_one_comment_count = get_comments_number();
 					'avatar_size' => 60,
 					'style'       => 'ol',
 					'short_ping'  => true,
+					'callback'    => 'custom_comment_template',
 				)
 			);
 			?>
